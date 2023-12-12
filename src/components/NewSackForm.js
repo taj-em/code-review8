@@ -1,15 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { v4 } from "uuid";
 
 function NewSackForm(props){
 
   function handleNewTicketFormSubmission(event) {
     event.preventDefault();
-    console.log(event.target.name.value);
-    console.log(event.target.origin.value);
-    console.log(event.target.price.value);
-    console.log(event.target.roast.value);
+    props.onNewSackCreation({
+      name: event.target.name.value,
+      origin: event.target.origin.value,
+      price: event.target.price.value,
+      roast: event.target.roast.value,
+      id: v4()
+    })
   }
-  
+
   return (
     <React.Fragment>
       <form onSubmit={handleNewTicketFormSubmission}>
@@ -33,6 +38,10 @@ function NewSackForm(props){
       </form>
     </React.Fragment>
   );
+}
+
+NewSackForm.propTypes = {
+  onNewSackCreation: PropTypes.func
 }
 
 export default NewSackForm;

@@ -7,7 +7,8 @@ class SackControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      mainSackList: []
     };
   }
 
@@ -17,15 +18,23 @@ class SackControl extends React.Component {
     }));
   }
 
-  render(){
+  handleAddingNewSackToList = (newSack) => {
+    const newMainSackList = this.state.mainSackList.concat(newSack);
+    this.setState({
+      mainSackList: newMainSackList,
+      formVisibleOnPage: false
+    })
+  }
+
+  render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewSackForm />;
-      buttonText = "Return to Ticket List";
+      currentlyVisibleState = <NewSackForm onNewSackCreation={this.handleAddingNewSackToList} />;
+      buttonText = "Return to Sack List";
     } else {
-      currentlyVisibleState = <SackList />
+      currentlyVisibleState = <SackList sackList={this.state.mainSackList} />
       buttonText = "Add Sack";
     }
     return (

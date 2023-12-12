@@ -1,34 +1,13 @@
 import React from "react";
 import Sack from "./Sack";
+import PropTypes from "prop-types";
 
-const mainSackList = [
-  {
-    name: "Bean",
-    origin: "Place",
-    price: "$12",
-    roast: "Burnt"
-  },
-  {
-    name: "Bean",
-    origin: "Place",
-    price: "$12",
-    roast: "Light"
-  },
-  {
-    name: "Bean",
-    origin: "Place",
-    price: "$12",
-    roast: "Dark"
-  }
-]
-
-
-function SackList() {
+function SackList(props) {
   return (
     <React.Fragment>
         <hr/>
-        {mainSackList.map((sack, index) =>
-          <Sack names={sack.name}
+        {props.sackList.map((sack, index) =>
+          <Sack name={sack.name}
             origin={sack.origin}
             price={sack.price}
             roast={sack.roast}
@@ -36,6 +15,10 @@ function SackList() {
         )}
       </React.Fragment>
   );
+}
+
+SackList.propTypes = {
+  sackList: PropTypes.array
 }
 
 export default SackList;
