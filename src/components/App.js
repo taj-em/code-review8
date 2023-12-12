@@ -1,14 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import SackList from "./SackList";
+import SackControl from "./SackControl";
 
 function App(){
-  const name = "Thato";
-  const name2 = "Haley";
   return (
     <React.Fragment>
       <Header />
-      <SackList />
+      <SackControl />
     </React.Fragment>
   );
 }
