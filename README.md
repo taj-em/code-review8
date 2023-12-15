@@ -22,7 +22,7 @@ _Mock coffee shop inventory application, uses React to create, read and update "
 
 - _Clone repo from GitHub_
 - _Open a folder in the terminal to house the clone_
-- _type "git clone (repo-url)"__
+- _Type "git clone (repo-url)"__
 - _Open folder in a text editor, preferably VS Code_
 - _Enter "npm install" into the terminal_
 - _Enter "npm start" into the terminal_
