@@ -10,11 +10,8 @@ const sackControlSlice = createSlice({
   name: "sackControl",
   initialState,
   reducers: {
-    formVisible: (state) => {
-      state.formVisibleOnPage = true
-    },
-    formHidden: (state) => {
-      state.formVisibleOnPage = false
+    toggleFormVisibility: (state) => {
+      state.formVisibleOnPage = !state.formVisibleOnPage;
     },
     changeSelectedSack: (state, action) => {
       const { id } = action;
@@ -23,9 +20,30 @@ const sackControlSlice = createSlice({
     addNewSack: (state, action) => {
       const { newSack } = action;
       state.mainSackList = state.mainSackList.concat(newSack);
+    },
+    handleClick: (state) => {
+      if (state.selectedSack !== null) {
+        state.formVisibleOnPage = false;
+        state.selectedSack = null;
+      } else {
+        state.formVisibleOnPage = !state.formVisibleOnPage;
+      }
     }
   }
 })
+
+// handleClick = () => {
+//   if (this.state.selectedSack != null) {
+//     this.setState({
+//       formVisibleOnPage: false,
+//       selectedSack: null
+//     });
+//   } else {
+//     this.setState(prevState => ({
+//       formVisibleOnPage: !prevState.formVisibleOnPage
+//     }));
+//   }
+// }
 
 // handleAddingNewSackToList = (newSack) => {
 //   const newMainSackList = this.state.mainSackList.concat(newSack);
@@ -56,6 +74,6 @@ const sackControlSlice = createSlice({
 // ^convert to hook
 
 
-export const { formVisible, formHidden } = sackControlSlice.actions;
+export const { toggleFormVisibility, changeSelectedSack, addNewSack, handleClick  } = sackControlSlice.actions;
 
 export default sackControlSlice.reducer;
