@@ -21,7 +21,8 @@ _Mock coffee shop inventory application, uses React to create, read and update "
 ## Setup/Installation Requirements
 
 - _Clone repo from GitHub_
-- _Select a folder to house the clone, and type "git clone (repo-url)"_
+- _Open a folder in the terminal to house the clone_
+- _type "git clone (repo-url)"__
 - _Open folder in a text editor, preferably VS Code_
 - _Enter "npm install" into the terminal_
 - _Enter "npm start" into the terminal_
