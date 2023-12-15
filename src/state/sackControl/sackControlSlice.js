@@ -22,6 +22,7 @@ const sackControlSlice = createSlice({
       console.log('Action:', action);
       const { newSack } = action.payload;
       state.mainSackList = state.mainSackList.concat(newSack);
+      console.log('Updated state:', state);
     },
     handleClick: (state) => {
       if (state.selectedSack !== null) {
