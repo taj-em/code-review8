@@ -6,7 +6,7 @@ function SackList(props) {
   return (
     <React.Fragment>
         <hr/>
-        {props.sackList.map((sack) =>
+        {[...props.sackList].map((sack) =>
           <Sack
             whenSackClicked = { props.onSackSelection }
             name={sack.name}

@@ -48,7 +48,7 @@ render() {
   let buttonText = null;
   if (this.state.selectedSack != null) {
     currentlyVisibleState = <SackDetail sack={this.state.selectedSack} />
-    buttonText = "Return to Ticket List"
+    buttonText = "Return to Sack List"
   } else if (this.state.formVisibleOnPage) {
     currentlyVisibleState = <NewSackForm onNewSackCreation={this.handleAddingNewSackToList} />;
     buttonText = "Return to Sack List";

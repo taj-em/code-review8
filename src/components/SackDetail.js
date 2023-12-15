@@ -11,11 +11,13 @@ function SackDetail(props){
   
   const handleSellingSack = () => {
     const quantityAfterSell = sackQuantity - 1;
+    sack.quantity = quantityAfterSell;
     handleQuantityUpdate(quantityAfterSell);
   }
 
   const handleRestockingSack = () => {
     const quantityAfterRestock = 130;
+    sack.quantity = quantityAfterRestock;
     handleQuantityUpdate(quantityAfterRestock);
   }
 
