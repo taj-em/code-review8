@@ -16,8 +16,31 @@ const sackControlSlice = createSlice({
     formHidden: (state) => {
       state.formVisibleOnPage = false
     },
+    changeSelectedSack: (state, action) => {
+      const { id } = action;
+      state.selectedSack = state.mainSackList.filter(sack => sack.id === id)[0];
+    },
+    addNewSack: (state, action) => {
+      const { newSack } = action;
+      state.mainSackList = state.mainSackList.concat(newSack);
+    }
   }
 })
+
+// handleAddingNewSackToList = (newSack) => {
+//   const newMainSackList = this.state.mainSackList.concat(newSack);
+//   this.setState({
+//     mainSackList: newMainSackList,
+//     formVisibleOnPage: false,
+//   })
+// }
+
+
+
+// handleChangingSelectedSack = (id) => {
+//   const selectedSack = this.state.mainSackList.filter(sack => sack.id === id)[0];
+//   this.setState({ selectedSack: selectedSack });
+// }
 
 // Convert to Redux Store
 // constructor(props) {
@@ -31,9 +54,8 @@ const sackControlSlice = createSlice({
 
 //     formVisibleOnPage: false,
 // ^convert to hook
-// back from lunch commit
 
 
-export const { formControl } = sackControlSlice.actions;
+export const { formVisible, formHidden } = sackControlSlice.actions;
 
 export default sackControlSlice.reducer;
