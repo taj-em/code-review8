@@ -30,6 +30,7 @@ function NewSackForm(props){
         <input
           type='number'
           name='price'
+          min="1"
           placeholder='Price' />
         <input
           type='text'

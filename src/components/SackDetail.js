@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function SackDetail(props){
+function SackDetail(props) {
   const { sack } = props
   const [sackQuantity, setQuantity] = useState(sack.quantity);
 
   const handleQuantityUpdate = (newQuantity) => {
     setQuantity(newQuantity)
   }
-  
+
   const handleSellingSack = () => {
-    const quantityAfterSell = sackQuantity - 1;
-    sack.quantity = quantityAfterSell;
-    handleQuantityUpdate(quantityAfterSell);
+    if (sack.quantity >= 1) {
+      const quantityAfterSell = sackQuantity - 1;
+      sack.quantity = quantityAfterSell;
+      handleQuantityUpdate(quantityAfterSell);
+    } else {
+      handleQuantityUpdate(sack.quantity);
+    }
   }
 
   const handleRestockingSack = () => {
@@ -30,7 +34,7 @@ function SackDetail(props){
       <h5>Roast: {sack.roast}</h5>
       <button onClick={handleSellingSack}>Sell Sack</button>
       <button onClick={handleRestockingSack}>Restock Sack</button>
-      <hr/>
+      <hr />
     </React.Fragment>
   );
 }
