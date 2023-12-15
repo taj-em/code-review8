@@ -13,6 +13,7 @@
 - _Webpack_
 - _Node Package Manager_
 - _JSON_
+- _CSS_
 
 ## Description
 
