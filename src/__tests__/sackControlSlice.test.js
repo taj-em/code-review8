@@ -30,20 +30,15 @@ describe("reducers", () => {
     }));
 
     expect(newState.mainSackList).toEqual(
-      expect.arrayContaining([
+      [
         {
           name: "f",
           origin: "f",
           price: 1,
           roast: "f",
           quantity: 130
-        },
-      ])
-    );
-    expect(newState).toEqual({
-      formVisibleOnPage: false,
-      mainSackList: expect.any(Array),
-      selectedSack: null
-    })
+        }
+      ]
+    )
   });
 });

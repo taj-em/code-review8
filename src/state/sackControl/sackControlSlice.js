@@ -18,6 +18,8 @@ const sackControlSlice = createSlice({
       state.selectedSack = state.mainSackList.filter(sack => sack.id === id)[0];
     },
     addNewSack: (state, action) => {
+      console.log('Current state:', state);
+      console.log('Action:', action);
       const { newSack } = action.payload;
       state.mainSackList = state.mainSackList.concat(newSack);
     },
@@ -74,6 +76,6 @@ const sackControlSlice = createSlice({
 // ^convert to hook
 
 
-export const { toggleFormVisibility, changeSelectedSack, addNewSack, handleClick  } = sackControlSlice.actions;
+export const { toggleFormVisibility, changeSelectedSack, addNewSack, handleClick } = sackControlSlice.actions;
 
 export default sackControlSlice.reducer;
