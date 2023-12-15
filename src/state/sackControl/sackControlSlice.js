@@ -18,7 +18,7 @@ const sackControlSlice = createSlice({
       state.selectedSack = state.mainSackList.filter(sack => sack.id === id)[0];
     },
     addNewSack: (state, action) => {
-      const { newSack } = action;
+      const { newSack } = action.payload;
       state.mainSackList = state.mainSackList.concat(newSack);
     },
     handleClick: (state) => {
