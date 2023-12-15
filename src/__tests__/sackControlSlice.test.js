@@ -1,12 +1,22 @@
-import { toggleFormVisibility, addNewSack, handleClick, changeSelectedSack }
-import { useSelector } from "react-redux"
+import sackControlReducer, { toggleFormVisibility, addNewSack, handleClick, changeSelectedSack } from "../state/sackControl/sackControlSlice";
+let initialState;
 
-describe('toggleFormVisiblity', () => {
+beforeEach(() => {
+  initialState = {
+    formVisibleOnPage: false,
+    mainSackList: [],
+    selectedSack: null
+  };
+});
 
-  test('Should return true', () => {
-    const state = useSelector((store) => store.sackControl)
-    let dispatch = useDispatch();
-    dispatch(toggleFormVisibility());
-    expect(state.formVisibleOnPage).toEqual(true);
-  })
-})
+describe("reducers", () => {
+  
+  test("should toggle form visibility", () => {
+    const newState = sackControlReducer(initialState, toggleFormVisibility());
+    expect(newState).toEqual({
+      formVisibleOnPage: true,
+      mainSackList: [],
+      selectedSack: null
+    })
+  });
+});
