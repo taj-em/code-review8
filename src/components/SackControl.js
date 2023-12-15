@@ -1,6 +1,7 @@
 import React from 'react';
 import NewSackForm from './NewSackForm';
 import SackList from './SackList';
+import SackDetail from './SackDetail';
 
 class SackControl extends React.Component {
 
@@ -8,42 +9,60 @@ class SackControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainSackList: []
+      mainSackList: [],
+      selectedSack: null
     };
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
-  }
-
-  handleAddingNewSackToList = (newSack) => {
-    const newMainSackList = this.state.mainSackList.concat(newSack);
-    this.setState({
-      mainSackList: newMainSackList,
-      formVisibleOnPage: false
-    })
-  }
-
-  render() {
-    let currentlyVisibleState = null;
-    let buttonText = null;
-
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewSackForm onNewSackCreation={this.handleAddingNewSackToList} />;
-      buttonText = "Return to Sack List";
+    if (this.state.selectedSack != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedSack: null
+      });
     } else {
-      currentlyVisibleState = <SackList sackList={this.state.mainSackList} />
-      buttonText = "Add Sack";
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
     }
-    return (
-      <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
-    );
   }
+
+
+
+handleAddingNewSackToList = (newSack) => {
+  const newMainSackList = this.state.mainSackList.concat(newSack);
+  this.setState({
+    mainSackList: newMainSackList,
+    formVisibleOnPage: false,
+  })
+}
+
+handleChangingSelectedSack = (id) => {
+  const selectedSack = this.state.mainSackList.filter(sack => sack.id === id)[0];
+  this.setState({ selectedSack: selectedSack });
+}
+
+
+render() {
+  let currentlyVisibleState = null;
+  let buttonText = null;
+  if (this.state.selectedSack != null) {
+    currentlyVisibleState = <SackDetail sack={this.state.selectedSack} />
+    buttonText = "Return to Ticket List"
+  } else if (this.state.formVisibleOnPage) {
+    currentlyVisibleState = <NewSackForm onNewSackCreation={this.handleAddingNewSackToList} />;
+    buttonText = "Return to Sack List";
+  } else {
+    currentlyVisibleState = <SackList sackList={this.state.mainSackList} onSackSelection={this.handleChangingSelectedSack}  />
+    buttonText = "Add Sack";
+  }
+  return (
+    <React.Fragment>
+      {currentlyVisibleState}
+      <button onClick={this.handleClick}>{buttonText}</button>
+    </React.Fragment>
+  );
+}
 
 }
 

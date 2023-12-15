@@ -11,6 +11,7 @@ function NewSackForm(props){
       origin: event.target.origin.value,
       price: event.target.price.value,
       roast: event.target.roast.value,
+      quantity: 130,
       id: v4()
     })
   }
