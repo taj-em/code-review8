@@ -19,6 +19,20 @@ const sackControlSlice = createSlice({
   }
 })
 
+// Convert to Redux Store
+// constructor(props) {
+//   super(props);
+//   this.state = {
+//     formVisibleOnPage: false,
+//     mainSackList: [],
+//     selectedSack: null
+//   };
+// }
+
+//     formVisibleOnPage: false,
+// ^convert to hook
+
+
 export const { formControl } = sackControlSlice.actions;
 
 export default sackControlSlice.reducer;
