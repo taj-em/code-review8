@@ -9,6 +9,9 @@
 - _HTML_
 - _JavaScript_
 - _React_
+- _React-Redux_
+- _Redux Toolkit_
+- _Jest_
 - _React Developer Tools_
 - _Webpack_
 - _Node Package Manager_
