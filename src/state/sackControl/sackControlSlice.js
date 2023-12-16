@@ -15,14 +15,10 @@ const sackControlSlice = createSlice({
     },
     changeSelectedSack: (state, action) => {
       const { id } = action;
-      state.selectedSack = state.mainSackList.filter(sack => sack.id === id)[0];
+      state.selectedSack = state.mainSackList.find(sack => sack.id === id);
     },
     addNewSack: (state, action) => {
-      console.log('Current state:', state);
-      console.log('Action:', action);
-      const { newSack } = action.payload;
-      state.mainSackList = state.mainSackList.concat(newSack);
-      console.log('Updated state:', state);
+      state.mainSackList.push(action.payload);
     },
     handleClick: (state) => {
       if (state.selectedSack !== null) {
